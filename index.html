@@ -1,31 +1,1078 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Erick Valderrama | Fullstack Developer</title>
+  <meta
+    name="description"
+    content="Erick Valderrama - Arquitecto de Soluciones y Desarrollador Fullstack especializado en arquitectura empresarial, APIs, integraciones, cloud, backend y frontend."
+  />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Erick Valderrama | Arquitecto de Soluciones y Desarrollador Fullstack</title>
+
+  <style>
+    :root {
+      --bg: #08111f;
+      --bg-soft: #0f1b2d;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-strong: rgba(255, 255, 255, 0.10);
+      --text: #edf4ff;
+      --muted: #a9b8cc;
+      --primary: #62a8ff;
+      --primary-2: #7b6cff;
+      --accent: #5eead4;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+      --max: 1180px;
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(98, 168, 255, 0.16), transparent 32%),
+        radial-gradient(circle at 90% 15%, rgba(123, 108, 255, 0.17), transparent 28%),
+        radial-gradient(circle at 50% 90%, rgba(94, 234, 212, 0.10), transparent 30%),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(calc(100% - 36px), var(--max));
+      margin-inline: auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 17, 31, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-inner {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: #08111f;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      font-weight: 900;
+      box-shadow: 0 12px 32px rgba(98, 168, 255, 0.28);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 650;
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      padding: 11px 17px;
+      border-radius: 999px;
+      color: #06101c !important;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      box-shadow: 0 12px 30px rgba(98, 168, 255, 0.20);
+    }
+
+    .hero {
+      padding: 92px 0 54px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.9rem;
+      font-weight: 750;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(94, 234, 212, 0.85);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 820px;
+      font-size: clamp(3.2rem, 7vw, 6.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent), var(--primary), #b197ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 780px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.06rem, 2vw, 1.26rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 20px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-weight: 800;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.28);
+    }
+
+    .btn-primary {
+      color: #07111d;
+      border: 0;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      box-shadow: 0 18px 42px rgba(98, 168, 255, 0.22);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 28px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -50px -70px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(94,234,212,.35), transparent 68%);
+    }
+
+    .metric {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .metric:last-child {
+      border-bottom: 0;
+    }
+
+    .metric strong {
+      font-size: 2.1rem;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .section {
+      padding: 68px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      margin: 0 0 8px;
+      color: var(--primary);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    .section-subtitle {
+      max-width: 600px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--card);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(98, 168, 255, 0.34);
+      background: var(--card-strong);
+    }
+
+    .card h3 {
+      margin: 14px 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(94,234,212,.18), rgba(98,168,255,.16));
+      border: 1px solid rgba(255,255,255,.11);
+      font-size: 1.15rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .skill-group {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--card);
+    }
+
+    .skill-group h3 {
+      margin: 0 0 16px;
+      font-size: 1.05rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 9px 12px;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 999px;
+      color: #dce9fb;
+      background: rgba(255,255,255,.045);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .experience {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 22px;
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--card);
+    }
+
+    .experience-meta {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .experience-meta strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    .experience h3 {
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+    }
+
+    .experience p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    .tech-line {
+      color: #d8e7fb;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      min-height: 260px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.025)),
+        var(--bg-soft);
+      box-shadow: 0 18px 55px rgba(0,0,0,.15);
+    }
+
+    .project-number {
+      color: var(--primary);
+      font-weight: 900;
+      font-size: 0.86rem;
+      letter-spacing: 0.1em;
+    }
+
+    .project h3 {
+      margin: 16px 0 9px;
+      font-size: 1.35rem;
+      line-height: 1.18;
+    }
+
+    .project p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .project .tech-line {
+      margin-top: 22px;
+    }
+
+    .contact {
+      margin-bottom: 70px;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(94,234,212,.12), rgba(98,168,255,.11), rgba(123,108,255,.10));
+      box-shadow: var(--shadow);
+    }
+
+    .contact h2 {
+      margin: 0 0 10px;
+    }
+
+    .contact p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .footer-note {
+      padding: 0 0 28px;
+      color: #718198;
+      text-align: center;
+      font-size: 0.84rem;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links a:not(.nav-cta) {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 68px;
+      }
+
+      .hero-grid,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .projects {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-card {
+        max-width: 560px;
+      }
+
+      .contact-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(calc(100% - 24px), var(--max));
+      }
+
+      .nav-inner {
+        height: 66px;
+      }
+
+      .brand-text {
+        display: none;
+      }
+
+      .hero {
+        padding: 54px 0 28px;
+      }
+
+      h1 {
+        font-size: clamp(2.9rem, 16vw, 4.4rem);
+      }
+
+      .section {
+        padding: 48px 0;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .cards,
+      .projects,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience {
+        grid-template-columns: 1fr;
+      }
+
+      .contact {
+        padding: 28px;
+      }
+
+      .hero-actions,
+      .contact-links {
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.045);
+    }
+
+    .lang-btn {
+      min-width: 42px;
+      height: 34px;
+      border: 0;
+      border-radius: 999px;
+      color: var(--muted);
+      background: transparent;
+      font: inherit;
+      font-size: .84rem;
+      font-weight: 850;
+      cursor: pointer;
+      transition: color .2s ease, background .2s ease, transform .2s ease;
+    }
+
+    .lang-btn:hover {
+      color: var(--text);
+    }
+
+    .lang-btn.active {
+      color: #07111d;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      box-shadow: 0 8px 20px rgba(98,168,255,.18);
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        gap: 10px;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+    }
+</style>
 </head>
+
 <body>
-  <h1>Erick Valderrama</h1>
-  <h2>Fullstack Developer</h2>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Ir al inicio">
+        <span class="brand-mark">EV</span>
+        <span class="brand-text">Erick Valderrama</span>
+      </a>
 
-  <p>
-    I am a Fullstack Developer with experience in .NET, C#, Angular, Node.js,
-    Python, Golang, SQL Server, APIs REST, integrations, CI/CD and cloud-based solutions.
-  </p>
+      <div class="nav-links">
+        <a href="#about" data-es="Perfil" data-en="About">Perfil</a>
+        <a href="#skills" data-es="Habilidades" data-en="Skills">Habilidades</a>
+        <a href="#experience" data-es="Experiencia" data-en="Experience">Experiencia</a>
+        <a href="#projects" data-es="Proyectos" data-en="Projects">Proyectos</a>
+        <a class="nav-cta" href="mailto:evalderramasanchez@gmail.com"
+           data-es="Contáctame" data-en="Contact me">Contáctame</a>
 
-  <h3>Skills</h3>
-  <ul>
-    <li>.NET / C# / ASP.NET</li>
-    <li>Angular / React / TypeScript</li>
-    <li>Node.js / Python / Golang</li>
-    <li>SQL Server / MySQL / Oracle / MongoDB</li>
-    <li>Azure DevOps / CI/CD / Docker</li>
-  </ul>
+        <div class="lang-switch" aria-label="Selector de idioma">
+          <button class="lang-btn active" type="button" data-lang="es" aria-pressed="true">ES</button>
+          <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-  <h3>Contact</h3>
-  <p>Email: evalderramasanchez@gmail.com</p>
-  <p>GitHub: github.com/erickvalderrama</p>
-  <p>LinkedIn: linkedin.com/in/erickvalderrama</p>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"
+               data-es="Disponible para oportunidades remotas"
+               data-en="Available for remote opportunities">
+            Disponible para oportunidades remotas
+          </div>
+
+          <h1>
+            <span data-es="Arquitecto de Soluciones y Desarrollador Fullstack"
+                  data-en="Solutions Architect &amp; Fullstack Developer">
+              Arquitecto de Soluciones y Desarrollador Fullstack
+            </span>
+            <span class="gradient-text"
+                  data-es="diseñando y construyendo sistemas escalables."
+                  data-en="designing and building scalable systems.">
+              diseñando y construyendo sistemas escalables.
+            </span>
+          </h1>
+
+          <p class="hero-copy"
+             data-es="Arquitecto de Soluciones y Desarrollador Fullstack con más de 10 años de experiencia diseñando y construyendo plataformas empresariales, integraciones, APIs, soluciones cloud y aplicaciones frontend modernas con .NET, Angular, Go, Python, Node.js y bases de datos SQL/NoSQL."
+             data-en="Solutions Architect and Fullstack Developer with 10+ years of experience designing and building enterprise platforms, system integrations, APIs, cloud solutions and modern frontend applications using .NET, Angular, Go, Python, Node.js and SQL/NoSQL databases.">
+            Arquitecto de Soluciones y Desarrollador Fullstack con más de 10 años de experiencia diseñando y construyendo plataformas empresariales, integraciones, APIs, soluciones cloud y aplicaciones frontend modernas con .NET, Angular, Go, Python, Node.js y bases de datos SQL/NoSQL.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:evalderramasanchez@gmail.com"
+               data-es="Trabajemos juntos" data-en="Let’s work together">Trabajemos juntos</a>
+            <a class="btn btn-secondary"
+               href="https://www.linkedin.com/in/erick-valderrama-sanchez/"
+               target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn btn-secondary"
+               href="https://github.com/erickvalderrama"
+               target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Resumen profesional">
+          <div class="metric">
+            <div>
+              <strong>10+</strong>
+              <span data-es="Años en desarrollo de software"
+                    data-en="Years in software development">
+                Años en desarrollo de software
+              </span>
+            </div>
+            <span>01</span>
+          </div>
+
+          <div class="metric">
+            <div>
+              <strong>5</strong>
+              <span data-es="Años con responsabilidades de arquitectura"
+                    data-en="Years with architecture responsibilities">
+                Años con responsabilidades de arquitectura
+              </span>
+            </div>
+            <span>02</span>
+          </div>
+
+          <div class="metric">
+            <div>
+              <strong>8M+</strong>
+              <span data-es="Registros gestionados en producción"
+                    data-en="Production records handled">
+                Registros gestionados en producción
+              </span>
+            </div>
+            <span>03</span>
+          </div>
+
+          <div class="metric">
+            <div>
+              <strong>B2</strong>
+              <span data-es="Nivel profesional de inglés"
+                    data-en="Professional English level">
+                Nivel profesional de inglés
+              </span>
+            </div>
+            <span>04</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker" data-es="Lo que hago" data-en="What I do">Lo que hago</p>
+            <h2 data-es="Desde el discovery hasta la arquitectura y entrega."
+                data-en="From discovery to architecture and delivery.">
+              Desde el discovery hasta la arquitectura y entrega.
+            </h2>
+          </div>
+
+          <p class="section-subtitle"
+             data-es="Traduzco necesidades de negocio en arquitecturas escalables, estrategias de integración y hojas de ruta técnicas, combinando visión de arquitectura con experiencia práctica en ingeniería, cloud, datos y DevOps."
+             data-en="I translate business needs into scalable architectures, integration strategies and technical roadmaps, combining architectural vision with hands-on engineering, cloud, data and DevOps experience.">
+            Traduzco necesidades de negocio en arquitecturas escalables, estrategias de integración y hojas de ruta técnicas, combinando visión de arquitectura con experiencia práctica en ingeniería, cloud, datos y DevOps.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="icon">◇</div>
+            <h3 data-es="Arquitectura de Soluciones" data-en="Solution Architecture">
+              Arquitectura de Soluciones
+            </h3>
+            <p data-es="Definición de arquitectura, análisis de trade-offs, escalabilidad, modernización y hojas de ruta técnicas."
+               data-en="Architecture definition, trade-off analysis, scalability, modernization and technical roadmaps.">
+              Definición de arquitectura, análisis de trade-offs, escalabilidad, modernización y hojas de ruta técnicas.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">⇄</div>
+            <h3 data-es="Arquitectura de Integración" data-en="Integration Architecture">
+              Arquitectura de Integración
+            </h3>
+            <p data-es="APIs, flujos orientados a eventos, interoperabilidad, seguridad, trazabilidad e integración de datos."
+               data-en="APIs, event-driven flows, interoperability, security, traceability and data integration.">
+              APIs, flujos orientados a eventos, interoperabilidad, seguridad, trazabilidad e integración de datos.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">☁</div>
+            <h3 data-es="Cloud y Entrega" data-en="Cloud & Delivery">Cloud y Entrega</h3>
+            <p data-es="Azure/AWS, CI/CD, Docker, observabilidad, estrategia de despliegue y confiabilidad en producción."
+               data-en="Azure/AWS, CI/CD, Docker, observability, deployment strategy and production reliability.">
+              Azure/AWS, CI/CD, Docker, observabilidad, estrategia de despliegue y confiabilidad en producción.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker" data-es="Perfil técnico" data-en="Technical profile">Perfil técnico</p>
+            <h2 data-es="Tecnologías principales." data-en="Core technologies.">
+              Tecnologías principales.
+            </h2>
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-group">
+            <h3>Backend</h3>
+            <div class="chips">
+              <span class="chip">C#</span>
+              <span class="chip">.NET Core</span>
+              <span class="chip">ASP.NET</span>
+              <span class="chip">Node.js</span>
+              <span class="chip">Go</span>
+              <span class="chip">Python</span>
+              <span class="chip">FastAPI</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">RabbitMQ</span>
+            </div>
+          </article>
+
+          <article class="skill-group">
+            <h3>Frontend</h3>
+            <div class="chips">
+              <span class="chip">Angular</span>
+              <span class="chip">TypeScript</span>
+              <span class="chip">React</span>
+              <span class="chip">Ionic</span>
+              <span class="chip">RxJS</span>
+              <span class="chip">HTML5</span>
+              <span class="chip">CSS3</span>
+              <span class="chip">Bootstrap</span>
+            </div>
+          </article>
+
+          <article class="skill-group">
+            <h3 data-es="Datos" data-en="Data">Datos</h3>
+            <div class="chips">
+              <span class="chip">SQL Server</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">MySQL</span>
+              <span class="chip">Oracle</span>
+              <span class="chip">MongoDB</span>
+              <span class="chip">Entity Framework</span>
+              <span class="chip">GORM</span>
+              <span class="chip">ETL</span>
+            </div>
+          </article>
+
+          <article class="skill-group">
+            <h3>DevOps & Cloud</h3>
+            <div class="chips">
+              <span class="chip">Azure DevOps</span>
+              <span class="chip">AWS</span>
+              <span class="chip">Docker</span>
+              <span class="chip">CI/CD</span>
+              <span class="chip">GitHub Actions</span>
+              <span class="chip">GitLab</span>
+              <span class="chip">Linux</span>
+              <span class="chip">Windows Server</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker" data-es="Trayectoria" data-en="Career">Trayectoria</p>
+            <h2 data-es="Experiencia profesional." data-en="Professional experience.">
+              Experiencia profesional.
+            </h2>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="experience">
+            <div class="experience-meta">
+              <strong data-es="2020 — Actualidad" data-en="2020 — Present">2020 — Actualidad</strong>
+              Tecnofactory
+            </div>
+            <div>
+              <h3 data-es="Desarrollador Fullstack Senior / Arquitecto de Soluciones"
+                  data-en="Senior Fullstack Developer / Solutions Architect">
+                Desarrollador Fullstack Senior / Arquitecto de Soluciones
+              </h3>
+              <p data-es="Arquitectura y modernización de plataformas empresariales, APIs, servicios distribuidos, integraciones cloud y flujos de datos de alto volumen. Participación en discovery, diseño de soluciones, evaluación de trade-offs, revisión de código, soporte productivo y toma de decisiones técnicas."
+                 data-en="Architecture and modernization of enterprise platforms, APIs, distributed services, cloud integrations and high-volume data workflows. Participation in discovery, solution design, trade-off evaluation, code reviews, production support and technical decision-making.">
+                Arquitectura y modernización de plataformas empresariales, APIs, servicios distribuidos, integraciones cloud y flujos de datos de alto volumen. Participación en discovery, diseño de soluciones, evaluación de trade-offs, revisión de código, soporte productivo y toma de decisiones técnicas.
+              </p>
+              <div class="tech-line">.NET · Angular · Go · Python · SQL Server · Oracle · MongoDB · RabbitMQ · Azure · Docker</div>
+            </div>
+          </article>
+
+          <article class="experience">
+            <div class="experience-meta">
+              <strong>2017 — 2020</strong>
+              Universidad del Magdalena
+            </div>
+            <div>
+              <h3 data-es="Desarrollador Fullstack" data-en="Fullstack Developer">
+                Desarrollador Fullstack
+              </h3>
+              <p data-es="Construcción de soluciones web y móviles para procesos académicos y psicoeducativos, incluyendo formularios, reportes, servicios backend y flujos institucionales basados en datos."
+                 data-en="Built web and mobile solutions for academic and psychoeducational processes, including forms, reporting, backend services and database-driven institutional workflows.">
+                Construcción de soluciones web y móviles para procesos académicos y psicoeducativos, incluyendo formularios, reportes, servicios backend y flujos institucionales basados en datos.
+              </p>
+              <div class="tech-line">Angular · AngularJS · Ionic · C# · ASP.NET · SQL Server · MySQL · Laravel</div>
+            </div>
+          </article>
+
+          <article class="experience">
+            <div class="experience-meta">
+              <strong>2014 — 2018</strong>
+              Clínica Médica Surgifast
+            </div>
+            <div>
+              <h3 data-es="Desarrollador Fullstack" data-en="Fullstack Developer">
+                Desarrollador Fullstack
+              </h3>
+              <p data-es="Mejora de reportes, ingreso biométrico de pacientes y sistemas internos de salud, apoyando una atención médica más rápida y una gestión de información más confiable."
+                 data-en="Improved reporting, biometric patient intake and internal healthcare systems, supporting faster medical attention and more reliable information management.">
+                Mejora de reportes, ingreso biométrico de pacientes y sistemas internos de salud, apoyando una atención médica más rápida y una gestión de información más confiable.
+              </p>
+              <div class="tech-line">ASP.NET · Visual Basic .NET · SQL Server · Windows Server</div>
+            </div>
+          </article>
+
+          <article class="experience">
+            <div class="experience-meta">
+              <strong>2016 — 2017</strong>
+              Innlab Corporation
+            </div>
+            <div>
+              <h3 data-es="Desarrollador Fullstack" data-en="Fullstack Developer">
+                Desarrollador Fullstack
+              </h3>
+              <p data-es="Desarrollo de funcionalidades web y móviles para una plataforma de calificación del servicio de taxis conectada a varias empresas, incluyendo flujos backend e integración de datos en MySQL."
+                 data-en="Developed web and mobile functionality for a taxi-service rating platform connected to multiple companies, including backend workflows and MySQL data integration.">
+                Desarrollo de funcionalidades web y móviles para una plataforma de calificación del servicio de taxis conectada a varias empresas, incluyendo flujos backend e integración de datos en MySQL.
+              </p>
+              <div class="tech-line">Ionic · Angular · Node.js · MySQL · Windows Server</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker" data-es="Trabajo destacado" data-en="Selected work">Trabajo destacado</p>
+            <h2 data-es="Proyectos relevantes." data-en="Relevant projects.">
+              Proyectos relevantes.
+            </h2>
+          </div>
+        </div>
+
+        <div class="projects">
+          <article class="project">
+            <div>
+              <span class="project-number" data-es="PROYECTO 01" data-en="PROJECT 01">PROYECTO 01</span>
+              <h3 data-es="Plataforma de Formularios Dinámicos" data-en="Dynamic Forms Platform">
+                Plataforma de Formularios Dinámicos
+              </h3>
+              <p data-es="Plataforma empresarial construida con .NET y Angular para gestionar formularios configurables, validaciones, reglas de negocio y más de 8 millones de registros en SQL Server."
+                 data-en="Enterprise platform built with .NET and Angular to manage configurable forms, validations, business rules and more than 8 million SQL Server records.">
+                Plataforma empresarial construida con .NET y Angular para gestionar formularios configurables, validaciones, reglas de negocio y más de 8 millones de registros en SQL Server.
+              </p>
+            </div>
+            <div class="tech-line">.NET · Angular · SQL Server · REST APIs</div>
+          </article>
+
+          <article class="project">
+            <div>
+              <span class="project-number" data-es="PROYECTO 02" data-en="PROJECT 02">PROYECTO 02</span>
+              <h3 data-es="Integración de IA en Producción" data-en="Production AI Integration">
+                Integración de IA en Producción
+              </h3>
+              <p data-es="Integración de ChatGPT en un flujo productivo para apoyar análisis de información, procesamiento de contenido y asistencia al usuario, con validaciones backend y trazabilidad."
+                 data-en="Integrated ChatGPT into a production workflow to support information analysis, content processing and user assistance with backend validation and traceability.">
+                Integración de ChatGPT en un flujo productivo para apoyar análisis de información, procesamiento de contenido y asistencia al usuario, con validaciones backend y trazabilidad.
+              </p>
+            </div>
+            <div class="tech-line">OpenAI API · Backend Services · Logging · Business Rules</div>
+          </article>
+
+          <article class="project">
+            <div>
+              <span class="project-number" data-es="PROYECTO 03" data-en="PROJECT 03">PROYECTO 03</span>
+              <h3 data-es="Integraciones Orientadas a Eventos" data-en="Event-Driven Integrations">
+                Integraciones Orientadas a Eventos
+              </h3>
+              <p data-es="Diseño de APIs y flujos de comunicación asíncrona entre sistemas empresariales para mejorar desacoplamiento, trazabilidad y resiliencia en procesos críticos."
+                 data-en="Designed APIs and asynchronous communication flows between enterprise systems, improving decoupling, traceability and resilience for critical processes.">
+                Diseño de APIs y flujos de comunicación asíncrona entre sistemas empresariales para mejorar desacoplamiento, trazabilidad y resiliencia en procesos críticos.
+              </p>
+            </div>
+            <div class="tech-line">REST APIs · RabbitMQ · Microservices · SQL/NoSQL</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact">
+          <div>
+            <p class="section-kicker" data-es="Conectemos" data-en="Let’s connect">Conectemos</p>
+            <h2 data-es="¿Buscas un Arquitecto de Soluciones o Desarrollador Fullstack Senior?"
+                data-en="Looking for a Solutions Architect or Senior Fullstack Developer?">
+              ¿Buscas un Arquitecto de Soluciones o Desarrollador Fullstack Senior?
+            </h2>
+            <p data-es="Disponible para oportunidades remotas en arquitectura de soluciones, desarrollo fullstack e ingeniería senior."
+               data-en="Available for remote Solutions Architecture, Fullstack Development and Senior Engineering opportunities.">
+              Disponible para oportunidades remotas en arquitectura de soluciones, desarrollo fullstack e ingeniería senior.
+            </p>
+          </div>
+
+          <div class="contact-links">
+            <a class="btn btn-primary" href="mailto:evalderramasanchez@gmail.com"
+               data-es="Escríbeme" data-en="Email me">Escríbeme</a>
+            <a class="btn btn-secondary"
+               href="https://www.linkedin.com/in/erick-valderrama-sanchez/"
+               target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="footer-note"
+             data-es="Arquitecto de Soluciones y Desarrollador Fullstack · Santa Marta, Colombia · GMT-5 · Remoto"
+             data-en="Solutions Architect & Fullstack Developer · Santa Marta, Colombia · GMT-5 · Remote">
+          Arquitecto de Soluciones y Desarrollador Fullstack · Santa Marta, Colombia · GMT-5 · Remoto
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const translations = {
+      es: {
+        title: "Erick Valderrama | Arquitecto de Soluciones y Desarrollador Fullstack",
+        description: "Erick Valderrama - Arquitecto de Soluciones y Desarrollador Fullstack especializado en arquitectura empresarial, APIs, integraciones, cloud, backend y frontend."
+      },
+      en: {
+        title: "Erick Valderrama | Solutions Architect & Fullstack Developer",
+        description: "Erick Valderrama - Solutions Architect and Fullstack Developer specializing in enterprise architecture, APIs, integrations, cloud, backend and frontend development."
+      }
+    };
+
+    const languageButtons = document.querySelectorAll(".lang-btn");
+    const translatableElements = document.querySelectorAll("[data-es][data-en]");
+    const descriptionMeta = document.querySelector('meta[name="description"]');
+
+    function setLanguage(language) {
+      document.documentElement.lang = language;
+
+      translatableElements.forEach((element) => {
+        element.textContent = element.dataset[language];
+      });
+
+      languageButtons.forEach((button) => {
+        const isActive = button.dataset.lang === language;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+
+      document.title = translations[language].title;
+      descriptionMeta.setAttribute("content", translations[language].description);
+      localStorage.setItem("portfolioLanguage", language);
+    }
+
+    languageButtons.forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    const savedLanguage = localStorage.getItem("portfolioLanguage");
+    setLanguage(savedLanguage === "en" ? "en" : "es");
+  </script>
 </body>
 </html>
